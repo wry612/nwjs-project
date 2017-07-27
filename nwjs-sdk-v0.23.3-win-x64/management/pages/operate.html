@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版管理端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/operate.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>操盘 {{clientId}}</span>
+    </div>
+</div>
+<div id="operate" v-cloak>
+    <div class="title">{{contractCode}}<span>{{contractName}}</span></div>
+    <div class="info"><span>资金：{{fundTotal}}</span><span>可用：{{usableFund}}</span><span>持仓：{{holderQty}}</span><span>可卖：{{enableQty}}</span>
+    </div>
+    <div class="info">
+        <div><span>总量</span><span class="process blue-bg">{{hq.tradeTotal}}</span></div>
+        <div><span>涨跌</span><span class="process" v-bind:class="{redBg:hq.profitLoss>0,greenBg:hq.profitLoss<0}">{{hq.profitLoss}}({{hq.profitLossRate}})</span>
+        </div>
+    </div>
+    <div class="number-box">
+        <div><input type="number" min="0" max="999.99" v-model="inputPrice"><span>元</span></div>
+        <input type="number" min="1" v-model="inputNumber" v-bind:disabled="isDisabled">
+        <input type="button" v-bind:value="favDetail.param_decimal[0]" v-on:click="setNumber">
+        <input type="button" v-bind:value="favDetail.param_decimal[1]" v-on:click="setNumber">
+        <input type="button" v-on:click="setNumber" v-bind:value="favDetail.param_decimal[3]">
+        <input type="button" v-bind:value="favDetail.param_decimal[4]" v-on:click="setNumber">
+        <input type="button" value="清除" class="blue" v-on:click="clearInput">
+        <div class="flex"><input type="checkbox" v-model="isFixed" id="check1"><label for="check1">固定</label></div>
+    </div>
+    <div class="operate-box">
+        <div><input type="button" value="买" v-on:click="buyOrSell(1)"><input type="button" value="卖"
+                                                                             v-on:click="buyOrSell(2)" class="green">
+        </div>
+        <div><input type="button" value="撤买" v-on:click="revokeBSA('B')">
+            <input type="button" value="撤卖" v-on:click="revokeBSA('S')" class="green"><input type="button" value="全部撤销"
+                                                                                             v-on:click="revokeBSA('A')"
+                                                                                             class="blue"></div>
+        <div class="flex"><input type="checkbox" id="check2" v-model="isFifth" v-on:change="showFifth"><label
+                for="check2">15档连续</label></div>
+    </div>
+    <div class="container" v-show="!isFifth">
+        <div class="table-wrap" id="tableWrap">
+            <div class="fixed" id="table1">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="14%">委买</th>
+                        <th width="14%">买量</th>
+                        <th width="14%">现量</th>
+                        <th width="15%">盘面价格</th>
+                        <th width="14%">卖量</th>
+                        <th width="14%">委卖</th>
+                        <th width="15%">市场成交</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <table id="fixTable" class="content-table">
+                <thead>
+                <tr>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="15%"></th>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="15%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in showList">
+                    <td v-bind:style="{background:favDetail.param_color[0]}" v-on:click="buyOrSell(1,item.price)">{{item.buy}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[1]}">{{item.buyNum}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[2]}">{{item.nowNum}}</td>
+                    <td v-bind:style="{background:item.price==hq.currentPrice?'#CC4A4F':favDetail.param_color[3]}">
+                        {{item.price}}
+                    </td>
+                    <td v-bind:style="{background:favDetail.param_color[4]}">{{item.sellNum}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[5]}" v-on:click="buyOrSell(2,item.price)>{{item.sell}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[6]}">{{item.market}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="left-nav">
+            <li class="red" v-on:click="goPrice(100)">涨</li>
+            <li class="green" v-on:click="goPrice(15)">15</li>
+            <li class="green" v-on:click="goPrice(14)">14</li>
+            <li class="green" v-on:click="goPrice(13)">13</li>
+            <li class="green" v-on:click="goPrice(12)">12</li>
+            <li class="green" v-on:click="goPrice(11)">11</li>
+            <li class="green" v-on:click="goPrice(10)">10</li>
+            <li class="green" v-on:click="goPrice(9)">9</li>
+            <li class="green" v-on:click="goPrice(8)">8</li>
+            <li class="green" v-on:click="goPrice(7)">7</li>
+            <li class="green" v-on:click="goPrice(6)">6</li>
+            <li class="green" v-on:click="goPrice(5)">5</li>
+            <li class="green" v-on:click="goPrice(4)">4</li>
+            <li class="green" v-on:click="goPrice(3)">3</li>
+            <li class="green" v-on:click="goPrice(2)">2</li>
+            <li class="green" v-on:click="goPrice(1)">1</li>
+            <li class="blue" v-on:click="goPrice(0)">现</li>
+            <li class="red" v-on:click="goPrice(-1)">1</li>
+            <li class="red" v-on:click="goPrice(-2)">2</li>
+            <li class="red" v-on:click="goPrice(-3)">3</li>
+            <li class="red" v-on:click="goPrice(-4)">4</li>
+            <li class="red" v-on:click="goPrice(-5)">5</li>
+            <li class="red" v-on:click="goPrice(-6)">6</li>
+            <li class="red" v-on:click="goPrice(-7)">7</li>
+            <li class="red" v-on:click="goPrice(-8)">8</li>
+            <li class="red" v-on:click="goPrice(-9)">9</li>
+            <li class="red" v-on:click="goPrice(-10)">10</li>
+            <li class="red" v-on:click="goPrice(-11)">11</li>
+            <li class="red" v-on:click="goPrice(-12)">12</li>
+            <li class="red" v-on:click="goPrice(-13)">13</li>
+            <li class="red" v-on:click="goPrice(-14)">14</li>
+            <li class="red" v-on:click="goPrice(-15)">15</li>
+            <li class="green" v-on:click="goPrice(-100)">跌</li>
+        </ul>
+        <ul class="right-nav">
+            <li class="gray" v-on:click="goPercent(9)">9%</li>
+            <li class="gray" v-on:click="goPercent(8)">8%</li>
+            <li class="gray" v-on:click="goPercent(7)">7%</li>
+            <li class="gray" v-on:click="goPercent(6)">6%</li>
+            <li class="gray" v-on:click="goPercent(5)">5%</li>
+            <li class="gray" v-on:click="goPercent(4)">4%</li>
+            <li class="gray" v-on:click="goPercent(3)">3%</li>
+            <li class="gray" v-on:click="goPercent(2)">2%</li>
+            <li class="gray" v-on:click="goPercent(1)">1%</li>
+            <li class="blue" v-on:click="goPercent(0)">昨</li>
+            <li class="gray" v-on:click="goPercent(-1)">-1%</li>
+            <li class="gray" v-on:click="goPercent(-2)">-2%</li>
+            <li class="gray" v-on:click="goPercent(-3)">-3%</li>
+            <li class="gray" v-on:click="goPercent(-4)">-4%</li>
+            <li class="gray" v-on:click="goPercent(-5)">-5%</li>
+            <li class="gray" v-on:click="goPercent(-6)">-6%</li>
+            <li class="gray" v-on:click="goPercent(-7)">-7%</li>
+            <li class="gray" v-on:click="goPercent(-8)">-8%</li>
+            <li class="gray" v-on:click="goPercent(-9)">-9%</li>
+        </ul>
+    </div>
+    <div class="container" v-show="isFifth">
+        <div class="table-wrap momg">
+            <div class="fixed" id="table2">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="14%">委买</th>
+                        <th width="14%">买量</th>
+                        <th width="14%">现量</th>
+                        <th width="15%">盘面价格</th>
+                        <th width="14%">卖量</th>
+                        <th width="14%">委卖</th>
+                        <th width="15%">市场成交</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <table class="content-table">
+                <thead>
+                <tr>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="15%"></th>
+                    <th width="14%"></th>
+                    <th width="14%"></th>
+                    <th width="15%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in fifthList">
+                    <td v-bind:style="{background:favDetail.param_color[0]}" v-on:click="buyOrSell(1,item.price)">
+                        {{item.buy}}
+                    </td>
+                    <td v-bind:style="{background:favDetail.param_color[1]}">{{item.buyNum}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[2]}">{{item.nowNum}}</td>
+                    <td v-bind:style="{background:item.price==hq.currentPrice?'#CC4A4F':favDetail.param_color[3]}">
+                        {{item.price}}
+                    </td>
+                    <td v-bind:style="{background:favDetail.param_color[4]}">{{item.sellNum}}</td>
+                    <td v-bind:style="{background:favDetail.param_color[5]}" v-on:click="buyOrSell(2,item.price)">
+                        {{item.sell}}
+                    </td>
+                    <td v-bind:style="{background:favDetail.param_color[6]}">{{item.market}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/operate.js"></script>
+</body>
+</html>

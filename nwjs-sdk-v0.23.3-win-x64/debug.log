@@ -1,0 +1,60 @@
+[0619/141017.104:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153309.785:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153320.726:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153349.048:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153408.130:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153413.777:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153439.653:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153522.541:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153613.237:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153624.783:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153624.904:ERROR:registration_protocol_win.cc(56)] CreateFile: 系统找不到指定的文件。 (0x2)
+[0619/153703.474:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153720.649:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153727.894:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0619/153929.311:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/084714.917:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/111849.193:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/131856.543:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/131903.989:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/132644.644:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/142413.914:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0620/163619.491:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0621/084443.670:WARNING:chrome_main_delegate.cc(569)] final extension: .dat
+[0621/084450.059:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0621/164648.132:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0622/092803.738:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0622/173242.485:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0622/173430.691:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/084638.977:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/084642.032:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/161626.579:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/161644.200:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/163953.799:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172021.469:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172024.935:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172031.953:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172032.078:ERROR:registration_protocol_win.cc(56)] CreateFile: 系统找不到指定的文件。 (0x2)
+[0623/172048.304:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172048.414:ERROR:registration_protocol_win.cc(56)] CreateFile: 系统找不到指定的文件。 (0x2)
+[0623/172058.902:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172059.011:ERROR:registration_protocol_win.cc(56)] CreateFile: 系统找不到指定的文件。 (0x2)
+[0623/172216.661:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172228.816:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172233.062:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172233.187:ERROR:registration_protocol_win.cc(56)] CreateFile: 系统找不到指定的文件。 (0x2)
+[0623/172312.424:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/172437.054:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/173340.190:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0623/173600.289:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0626/083218.495:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0627/085242.748:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0628/101629.819:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0628/104229.597:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0629/091132.144:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0630/142020.591:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0703/091646.183:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0705/103952.196:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0705/163935.040:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0706/085333.446:WARNING:chrome_main_delegate.cc(569)] final extension: 
+[0713/102625.159:WARNING:chrome_main_delegate.cc(569)] final extension: 

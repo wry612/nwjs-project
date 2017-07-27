@@ -1,0 +1,86 @@
+body{
+    padding-top:0;
+    background: url(../assert/images/loginBg.png) top center no-repeat;
+}
+.logo{
+    position: fixed;
+    left:670px;
+    top:470px;
+    width: 118px;
+    height: 16px;
+    background: url(../assert/images/logo.png);
+}
+.login-wrap{
+    width: 320px;
+    padding:60px 30px 0;
+}
+.login-wrap h2{
+    margin-bottom:30px;
+    color:#cc0000;
+    font-weight:normal;
+    text-align: center;
+}
+.input-box{
+    margin-top:10px;
+}
+.input-box .label{
+    margin-bottom: 6px;
+    font-weight:500;
+    line-height: 30px;
+}
+.input-box input{
+    width: 100%;
+    height: 40px;
+    padding:8px;
+    line-height: 24px;
+    background: #fff;
+    border:1px solid #ccc;
+}
+.input-box .code .code-input{
+    width: 150px;
+}
+.input-box .code .code-img{
+    float: right;
+    width: 80px;
+    background-size: cover;
+}
+.check-box{
+    margin-top:20px;
+}
+.check-box label{
+    font-size:14px;
+}
+.btn-box{
+    width: 280px;
+    height: 40px;
+    margin:20px auto;
+    color:#fff;
+    font-size:20px;
+    text-align: center;
+    line-height: 40px;
+    background: #cc0000;
+    border-radius:8px;
+}
+.login-close{
+    position: fixed;
+    right:20px;
+    top:20px;
+}
+.icon-min{
+    width: 24px;
+    height: 24px;
+    margin-left:10px;
+    background: url(../assert/images/login_min_normal.png) center no-repeat;
+}
+.icon-min:hover {
+    background: url(../assert/images/login_min_hover.png) center no-repeat;
+}
+.icon-close{
+    width: 24px;
+    height: 24px;
+    margin-left:30px;
+    background: url(../assert/images/login_close_normal.png) center no-repeat;
+}
+.icon-close:hover{
+    background: url(../assert/images/login_close_hover.png) center no-repeat;
+}

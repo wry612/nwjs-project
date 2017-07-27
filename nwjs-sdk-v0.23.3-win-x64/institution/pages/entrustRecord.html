@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版交易端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/entrustRecord.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>交易委托 账号({{clientId}})</span>
+    </div>
+</div>
+<div id="entrustRecord" v-cloak>
+    <div class="btn-wrap">
+        <input type="button" class="float-left noml" value="撤销买" v-on:click="revokeBSA('B')">
+        <input type="button" class="float-left" value="撤销卖" v-on:click="revokeBSA('S')">
+        <input type="button" class="float-left" value="全部撤销" v-on:click="revokeBSA('A')">
+        <input type="button" value="导出">
+    </div>
+    <div class="table-wrap" id="queryAsList">
+        <table class="fixed"><thead><tr>
+            <th width="6%">方向</th>
+            <th width="7%">数量</th>
+            <th width="10%">合约编号</th>
+            <th width="10%">合约名称</th>
+            <th width="8%">价格</th>
+            <th width="9%">未成交量</th>
+            <th width="7%">类型</th>
+            <th width="12%">有效期</th>
+            <th width="12%">挂单时间</th>
+            <th width="10%">状态</th>
+            <th>操作</th>
+        </tr></thead></table>
+        <table class="mt31">
+            <thead><tr><th></th></tr></thead>
+            <tbody>
+            <tr v-for="(item,index) in queryAsList">
+                <td width="6%">{{item[5]==1?"买入":"卖出"}}</td>
+                <td width="7%">{{item[7]}}</td>
+                <td width="10%">{{item[1]}}</td>
+                <td width="10%">{{item[2]}}</td>
+                <td width="8%">{{item[8]}}</td>
+                <td width="9%">{{item[15]}}</td>
+                <td width="7%">{{item[6]}}</td>
+                <td width="12%">{{timeToDate(item[17])}}</td>
+                <td width="12%">{{item[20]}}</td>
+                <td width="10%">{{orderStateEnum[item[12]]}}</td>
+                <td><input type="button" value="撤销" v-on:click="revoke(item.contract_code,item.id)" class="btn"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/entrustRecord.js"></script>
+</body>
+</html>

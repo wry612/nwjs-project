@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版管理端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeAll"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>交易主界面 {{version}}版</span>
+    </div>
+</div>
+<div id="index" v-cloak>
+    <div class="clearfix userinfo">
+        <input type="button" class="float-right logout" value="注销" v-on:click="logOut">
+        <input type="button" class="float-right" value="风险管理" v-on:click="openRiskManagement">
+        <input type="button" class="float-right" value="市场成交" v-on:click="openMarket">
+        <i class="icon-user"></i><span>姓名：{{nickName}}</span>
+        <i class="icon-user"></i><span>账号：{{userId}}</span>
+        <i class="icon-market"></i><span>市场：{{market}}</span>
+    </div>
+    <div id="tabs" class="tabs">
+        <ul class="clearfix">
+            <li><a href="#tabs-1" title="">交易</a></li>
+            <li><a href="#tabs-2" title="">设定</a></li>
+        </ul>
+        <div id="tabs_container" class="tabs_container">
+            <div id="tabs-1" class="tab-box">
+                <div class="table-wrap" id="table1">
+                    <table class="fixed"><thead><tr><th width="50%">交易账号</th><th width="50%">操作</th></tr></thead></table>
+                    <table class="mt31">
+                        <thead>
+                        <tr><th width="50%"></th><th width="50%"></th></tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in accountList"><td>{{item[1]}}</td>
+                            <td>
+                                <input type="button" value="成交记录" v-on:click="openDealRecord(item[1])">
+                                <input type="button" value="去操盘窗口" v-on:click="openOperate(item[1])">
+                                <input type="button" value="委托记录" v-on:click="openEntrustRecord(item[1])">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tabs-2" class="tab-box">
+                <div class="table-wrap" id="table2">
+                    <table class="fixed"><thead><tr><th width="33.3%">合约编号</th><th width="33.3%">合约名称</th><th width="33.3%">设置</th></tr></thead></table>
+                    <table class="mt31">
+                        <thead>
+                        <tr><th width="33.3%"></th><th width="33.3%"></th><th width="33.3%"></th></tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in contractList"><td>{{item[1]}}</td>
+                            <td>{{item[2]}}</td>
+                            <td>
+                                <input type="button" value="设置操作参数" v-on:click="openSetting(item[1],item[2],item[5])">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--End tabs container-->
+    </div>
+    <div class="sys-info">
+        系统时间：{{currentTime}}&nbsp;&nbsp;&nbsp;&nbsp;状态：{{sysStatus}}
+    </div>
+    <div class="dialog-cover">
+        <div class="dialog-wrap">
+            <div class="dialog-header">请选择合约<i class="icon-close" v-on:click="cancel"></i></div>
+            <div class="dialog-body">
+                <div>
+                    <select v-model="selectContract">
+                        <option v-for="(item,index) in contractList" v-bind:value="index">{{item[1]}}&nbsp;&nbsp;{{item[2]}}</option>
+                    </select>
+                </div>
+                <div class="btn-wrap">
+                    <input type="button" value="确定" v-on:click="goOperate()"><input type="button" value="取消" v-on:click="cancel">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/tabulous.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/index.js"></script>
+</body>
+</html>

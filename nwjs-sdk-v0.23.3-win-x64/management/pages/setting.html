@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版管理端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/setting.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <img src="../assert/images/logo.png"><span>操作参数设置</span>
+    </div>
+</div>
+<div id="setting" v-cloak>
+    <div class="setting-title">合约编号：{{contractCode}} &nbsp;&nbsp; 合约名称：{{contractName}}</div>
+    <div class="clearfix">
+        <div class="float-left left">
+            <fieldset>
+                <legend>快速设置按钮</legend>
+                <div class="button-line clearfix"><span>快速按钮1：</span><input type="text" v-model="favDetail.param_decimal[0]" /><span>快速按钮2：</span><input type="text" v-model="favDetail.param_decimal[1]" /></div>
+                <div class="button-line clearfix"><span>快速按钮3：</span><input type="text" v-model="favDetail.param_decimal[2]" /><span>快速按钮4：</span><input type="text" v-model="favDetail.param_decimal[3]" /></div>
+                <div class="button-line clearfix"><span>快速按钮5：</span><input type="text" v-model="favDetail.param_decimal[4]" /><span>快速按钮6：</span><input type="text" v-model="favDetail.param_decimal[5]" /></div>
+                <div class="button-line clearfix"><span>快速按钮7：</span><input type="text" v-model="favDetail.param_decimal[6]" /><span>快速按钮8：</span><input type="text" v-model="favDetail.param_decimal[7]" /></div>
+                <div class="button-line clearfix"><span>快速按钮9：</span><input type="text" v-model="favDetail.param_decimal[8]" /><span>快速按钮10：</span><input type="text" v-model="favDetail.param_decimal[9]" /></div>
+            </fieldset>
+            <fieldset>
+                <legend>操盘窗口表格字体</legend>
+                <div class="clearfix font-line"><span>字体：</span><span class="value">{{favDetail.param_font[0]}}</span><span>大小：</span><span class="value">{{favDetail.param_font[1]}}</span></div>
+                <div class="clearfix font-line"><span>加粗：</span><span class="value">{{favDetail.param_font[2]}}</span><span>倾斜：</span><span class="value">{{favDetail.param_font[3]}}</span></div>
+                <div class="set-font"><input type="button" class="btn" value="设置字体"></div>
+            </fieldset>
+            <fieldset>
+                <legend>操盘功能</legend>
+                <div class="caopan"><input type="checkbox" id="caopan" v-model="isConfirm" v-on:click="" /><label for="caopan">是否启用下单撤单确认</label></div>
+            </fieldset>
+        </div>
+        <div class="float-left right">
+            <fieldset>
+                <legend>操盘窗口表格背景色</legend>
+                <div class="clearfix color-line"><span>委托买单：</span><input type="color" v-model="favDetail.param_color[0]"></div>
+                <div class="clearfix color-line"><span>买量：</span><input type="color" v-model="favDetail.param_color[1]"></div>
+                <div class="clearfix color-line"><span>最新成交量：</span><input type="color" v-model="favDetail.param_color[2]"></div>
+                <div class="clearfix color-line"><span>盘面价格：</span><input type="color" v-model="favDetail.param_color[3]"></div>
+                <div class="clearfix color-line"><span>卖量：</span><input type="color" v-model="favDetail.param_color[4]"></div>
+                <div class="clearfix color-line"><span>委托卖单：</span><input type="color" v-model="favDetail.param_color[5]"></div>
+                <div class="clearfix color-line"><span>该价位成交累计：</span><input type="color" v-model="favDetail.param_color[6]"></div>
+                <div class="clearfix color-line"><span>最新价：</span><input type="color" v-model="favDetail.param_color[7]"></div>
+                <div class="clearfix color-line"><span>摆单颜色：</span><input type="color" v-model="favDetail.param_color[8]"></div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="btn-wrap"><input type="button" value="保存" v-on:click="favSave"></div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/setting.js"></script>
+</body>
+</html>

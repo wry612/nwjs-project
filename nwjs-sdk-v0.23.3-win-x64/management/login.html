@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版管理端</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<div id="login" v-cloak>
+    <div class="login-wrap">
+        <h2>大圆茶叶机构版管理端</h2>
+        <div class="input-box">
+            <div class="label">交易员账号</div>
+            <div>
+                <input type="text" v-model="account" list="accounts" placeholder="请输交易员入账号" v-on:keyup.enter='doEnter("password")' autofocus="autofocus" >
+                <datalist id="accounts"><option v-for="item in accountList">{{item}}</option></datalist>
+            </div>
+        </div>
+        <div class="input-box">
+            <div class="label">交易员密码</div>
+            <div><input type="text" v-model="password" id="password" onfocus="this.type='password'" placeholder="请输入交易密码" autocomplete="off" v-on:keyup.enter='doEnter("code")'></div>
+        </div>
+        <div class="input-box">
+            <div class="label">验证码</div>
+            <div class="code"><input type="text" v-model="code" maxlength="4" id="code" class="code-input" placeholder="请输入验证码" v-on:keyup.enter='doEnter()'>
+                <input type="button" class="code-img" v-on:click="getImgCode" v-bind:style="{backgroundImage:backgroundImg}"></div>
+        </div>
+        <div class="check-box">
+            <input type="checkbox" id="saveAccount" v-model="checkBox"><label for="saveAccount">保存账号</label>
+        </div>
+        <div class="btn-box" v-on:click="login">
+            登录
+        </div>
+    </div>
+</div>
+<div class="login-close" id="header">
+    <i class="float-right icon-close" v-on:click="closeAll"></i>
+    <i class="float-right icon-min" v-on:click="setMin"></i>
+</div>
+<div class="logo"></div>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/pages/login.js"></script>
+</body>
+</html>

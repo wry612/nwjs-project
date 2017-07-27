@@ -1,0 +1,33 @@
+.table-wrap{
+    position: relative;
+    margin:0 10px;
+    border:1px solid #ccc;
+    overflow: auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table th,table td{
+    border:1px solid #ccc;
+}
+table th{
+    padding:8px;
+    background: #e5e5e5;
+}
+table td{
+    padding:5px;
+    text-align: right;
+}
+table.fixed{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+}
+.mt31{
+    margin-top:14px;
+}
+table tr td:nth-child(1),table tr td:nth-child(2),table tr td:nth-child(3),table tr td:nth-child(4){
+    text-align: center;
+}

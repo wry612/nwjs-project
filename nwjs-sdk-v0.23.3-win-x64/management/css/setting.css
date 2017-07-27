@@ -1,0 +1,96 @@
+.setting-title{
+    line-height: 48px;
+    margin:0 20px;
+}
+.left{
+    width: 390px;
+    margin-left:20px;
+}
+.right{
+    width: 350px;
+    margin-left:10px;
+}
+fieldset{
+    position: relative;
+    padding:10px 0;
+    margin-bottom:20px;
+}
+fieldset:last-child{
+    margin-bottom: 0;
+}
+.right fieldset{
+    height: 100%;
+    margin-bottom:0;
+}
+legend{
+    margin-left:20px;
+}
+.button-line{
+    padding:10px 0;
+}
+.button-line span{
+    float: left;
+    width: 100px;
+    height: 32px;
+    margin-right: 10px;
+    text-align: right;
+    line-height: 32px;
+}
+.button-line input{
+    float: left;
+    width: 70px;
+    height: 32px;
+    padding:0 10px;
+    line-height: 32px;
+    border:1px solid #ccc;
+}
+.font-line{
+    padding:0 20px;
+}
+.font-line span{
+    float: left;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+}
+.font-line span.value{
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.set-font{
+    position: absolute;
+    right:20px;
+    top:34px;
+}
+.caopan{
+    padding:10px 20px;
+}
+.color-line{
+    padding:0 20px;
+}
+.color-line span{
+    float: left;
+    width: 150px;
+    line-height: 40px;
+}
+.color-line input{
+    float: left;
+    width: 50px;
+    height: 32px;
+    margin-top:4px;
+    line-height: 40px;
+}
+.btn-wrap{
+    text-align: center;
+}
+
+
+
+
+
+
+
+

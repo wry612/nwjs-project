@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版交易端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/dealRecord.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>成交记录 账号({{clientId}})</span>
+    </div>
+</div>
+<div id="dealRecord" v-cloak>
+    <div class="btn-wrap">
+        <input type="button" value="导出">
+    </div>
+    <div class="title">当前成交统计：</div>
+    <div class="table-wrap first">
+        <table class="fixed"><thead><tr>
+            <th width="12.5%"><input type="checkbox" name="checkAll" value=""></th>
+            <th width="12.5%">合约编号</th>
+            <th width="12.5%">合约名称</th>
+            <th width="12.5%">买入均价</th>
+            <th width="12.5%">买量</th>
+            <th width="12.5%">卖出均价</th>
+            <th width="12.5%">卖量</th>
+            <th width="12.5%">净量</th>
+        </tr></thead></table>
+        <table class="mt31">
+            <thead><tr><th width="12.5%"></th><th width="12.5%"></th><th width="12.5%"></th>
+                <th width="12.5%"></th><th width="12.5%"></th><th width="12.5%"></th><th width="12.5%"></th><th width="12.5%"></th></tr></thead>
+            <tbody>
+            <tr v-for="(item,index) in summaryArray"><td><input type="checkbox" name="single" v-bind:value="index"></td><td>{{item.contract_code}}</td><td>{{item.contract_code}}</td><td>{{item.contract_name}}</td>
+                <td>{{item.buy_avg_price}}</td><td>{{item.buy_amount}}</td><td>{{item.sell_avg_price}}</td><td>{{item.sell_amount}}</td><td>{{item.buy_amount-item.sell_amount}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="title mt10">当前成交明细：</div>
+    <div class="table-wrap" id="detailTable">
+        <table class="fixed"><thead><tr>
+            <th width="18%">时间</th>
+            <th width="18%">方向</th>
+            <th width="18%">数量</th>
+            <th width="10%">合约编号</th>
+            <th width="18%">合约名称</th>
+            <th width="18%">价格</th>
+        </tr></thead></table>
+        <table class="mt31">
+            <thead><tr><th width="18%"></th>
+                <th width="18%"></th>
+                <th width="18%"></th>
+                <th width="10%"></th>
+                <th width="18%"></th>
+                <th width="18%"></th></tr></thead>
+            <tbody>
+            <tr v-for="(item,index) in selectArray"><td>{{item.trade_time}}</td><td>{{item.action==1?"买入":"卖出"}}</td><td>{{item.quantity}}</td>
+                <td>{{item.contract_code}}</td><td>{{item.contract_name}}</td><td>{{item.price}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/dealRecord.js"></script>
+</body>
+</html>

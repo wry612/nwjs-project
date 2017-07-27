@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版交易端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/risk.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>风险管理</span>
+    </div>
+</div>
+<div id="riskManagement" v-cloak>
+    <div class="btn-wrap">
+        <input type="button" value="导出">
+    </div>
+    <div class="table-wrap" id="table1">
+        <table class="fixed">
+            <thead>
+            <tr>
+                <th width="10%">市场</th>
+                <th width="10%">交易账号</th>
+                <th width="10%">合约编号</th>
+                <th width="10%">合约名称</th>
+                <th width="10%">持仓</th>
+                <th width="10%">交易量</th>
+                <th width="10%">成本价</th>
+                <th width="10%">当日盈亏</th>
+                <th width="10%">市值</th>
+                <th width="10%">可用资金</th>
+            </tr>
+            </thead>
+        </table>
+        <table class="mt31">
+            <thead>
+                <tr>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="item in riskList">
+                    <tr><td>{{item[0]}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td>{{item[1][0][0]}}</td><td></td><td></td><td></td><td></td><td></td><td>{{item[1][0][1]}}</td><td>{{item[1][0][4]}}</td><td>{{item[1][0][2]}}</td></tr>
+                    <tr v-for="i in item[1][0][3]">
+                        <td></td><td></td><td>{{i[5]}}</td><td>{{i[0]}}</td><td>{{i[1]}}</td><td>{{i[2]}}</td><td>{{i[3]}}</td><td>{{i[4]}}</td><td>{{i[6]}}</td><td></td>
+                    </tr>
+                </template>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/riskManagement.js"></script>
+</body>
+</html>

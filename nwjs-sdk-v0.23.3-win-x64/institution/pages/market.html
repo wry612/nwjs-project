@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版交易端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/market.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>市场成交</span>
+    </div>
+</div>
+<div id="market" v-cloak>
+    <div class="btn-wrap">
+        <input type="button" value="新增" v-on:click="addNew">
+    </div>
+    <div class="market-wrap clearfix">
+        <div class="market-box float-left" v-for="(item,index) in showList">
+            <div class="title">{{item.contract[1]}}&nbsp;&nbsp;{{item.contract[2]}}<i class="icon-close" v-on:click="removeMarket(index,item.contract[1])"></i></div>
+            <div>
+                <div class="tabs">
+                    <ul class="clearfix">
+                        <li><a href="#tabs-1" title="">分笔</a></li>
+                        <li><a href="#tabs-2" title="">分价</a></li>
+                    </ul>
+                    <div class="tabs_container">
+                        <div id="tabs-1" class="tab-box">
+                            <div class="btn-wrap">
+                                <span>过滤单</span><input type="text" name="start"><span>——</span><input type="text" name="end">
+                                <input type="button" value="过滤" v-on:click="filter(index)"><input type="button" value="导出">
+                            </div>
+                            <div class="table-wrap">
+                                <table class="fixed">
+                                    <thead>
+                                    <tr><th width="25%">时间</th><th width="25%">方向</th><th width="25%">数量</th><th width="25%">价格</th></tr>
+                                    </thead>
+                                </table>
+                                <table class="mt31">
+                                    <thead>
+                                    <tr><th width="25%"></th><th width="25%"></th><th width="25%"></th><th width="25%"></th></tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="i in item.record.tick_array" v-bind:class="{red:i[1]=='1',green:i[1]=='2'}">
+                                        <td>{{i[0]}}</td><td v-if="i[1]==1">买入</td><td v-if="i[1]==2">卖出</td><td>{{i[2]}}</td><td>{{i[3]}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-wrap">
+                                总量：{{item.totalNumber}} 买量：{{item.sellInNumber}} 卖量：{{item.sellOutNumber}}
+                            </div>
+                        </div>
+                        <div id="tabs-2" class="tab-box">
+                            <div class="btn-wrap text-right">
+                               <input type="button" value="导出">
+                            </div>
+                            <div class="table-wrap fenjia">
+                                <table class="fixed">
+                                    <thead>
+                                    <tr><th width="10%">序号</th><th width="18%">价格</th><th width="18%">数量</th><th width="18%">笔数</th><th width="18%">金额</th><th width="18%">比例</th></tr>
+                                    </thead>
+                                </table>
+                                <table class="mt31">
+                                    <thead>
+                                    <tr><th width="10%"></th><th width="18%"></th><th width="18%"></th><th width="18%"></th><th width="18%"></th><th width="18%"></th></tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="i in item.fenjia" class="blue">
+                                        <td>{{i[0]}}</td><td>{{i[1]}}</td><td>{{i[2]}}</td><td>{{i[3]}}</td><td>{{i[4]}}</td><td>{{i[5]}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!--End tabs container-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-cover">
+        <div class="dialog-wrap">
+            <div class="dialog-header">请选择合约<i class="icon-close" v-on:click="cancel"></i></div>
+            <div class="dialog-body">
+                <div>
+                    <select v-model="selectContract">
+                        <option v-for="(item,index) in contractList" v-bind:value="index">{{item[1]}}&nbsp;&nbsp;{{item[2]}}</option>
+                    </select>
+                </div>
+                <div class="btn-wrap">
+                    <input type="button" value="确定" v-on:click="addNewContract"><input type="button" value="取消" v-on:click="cancel">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/tabulous.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/market.js"></script>
+</body>
+</html>

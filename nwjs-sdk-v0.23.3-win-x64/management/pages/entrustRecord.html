@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大圆茶叶机构版管理端</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/entrustRecord.css" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-wrap">
+        <i class="float-right icon-close" v-on:click="closeCurrent"></i>
+        <i class="float-right icon-max" v-on:click="setMax"></i>
+        <i class="float-right icon-min" v-on:click="setMin"></i>
+        <img src="../assert/images/logo.png"><span>交易委托 账号({{clientId}})</span>
+    </div>
+</div>
+<div id="entrustRecord" v-cloak>
+    <div class="btn-wrap">
+        <input type="button" class="float-left noml" value="撤销买" v-on:click="revokeBSA('B')">
+        <input type="button" class="float-left" value="撤销卖" v-on:click="revokeBSA('S')">
+        <input type="button" class="float-left" value="全部撤销" v-on:click="revokeBSA('A')">
+        <input type="button" value="导出">
+    </div>
+    <div class="table-wrap" id="queryAsList">
+        <table class="fixed"><thead><tr>
+            <th>方向</th>
+            <th>数量</th>
+            <th>合约编号</th>
+            <th>合约名称</th>
+            <th>价格</th>
+            <th>未成交量</th>
+            <th>类型</th>
+            <th>有效期</th>
+            <th>挂单时间</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr></thead></table>
+        <table class="mt31">
+            <thead><tr><th></th><th></th><th></th>
+                <th></th><th></th><th></th><th></th><th></th></tr></thead>
+            <tbody>
+            <tr v-for="(item,index) in queryAsList">
+                <td>{{item.action==1?"买入":"卖出"}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.contract_code}}</td>
+                <td>{{item.contract_name}}</td>
+                <td>{{item.avg_price}}</td>
+                <td>{{item.buy_amount}}</td>
+                <td>{{item.remain_qty}}</td>
+                <td>{{item.order_type}}</td>
+                <td>{{item.limit_date}}</td>
+                <td>{{item.create_time}}</td>
+                <td>{{item.order_state}}</td>
+                <td><input type="button" value="撤销" v-on:click="revoke(item.contract_code,item.id)" class="btn"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/pages/entrustRecord.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "name":"management",
+  "main":"login.html",
+  "description":"大圆茶叶机构版管理端",
+  "author":"wry",
+  "version":"0.0.1",
+  "key-words":["大圆茶叶机构版管理端","jquery.js","nw.js","vue"],
+  "window":{
+    "title":"大圆茶叶机构版管理端",
+    "icon":"./asserts/images/share-logo.ico",
+    "frame":false,
+    "position":"center",
+    "min_width":800,
+    "min_height":500,
+    "resizable":true
+  },
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.14.3"
+  },
+  "build": {
+    "appId": "io.github.evshiron.nwjs-builder-phoenix.institution",
+    "nwVersion": "0.23.3",
+    "packed": true,
+    "targets": [
+      "zip",
+      "nsis7z"
+    ],
+    "strippedProperties": [
+      "build"
+    ],
+    "outputPattern": "${NAME} ${VERSION} ${PLATFORM} ${ARCH}",
+    "win": {
+      "productName": "institution",
+      "companyName": "nwjs-builder-phoenix",
+      "copyright": "copyright",
+      "icon": "./assets/images/share-logo.ico"
+    },
+    "mac": {
+      "displayName": "institution",
+      "copyright": "copyright",
+      "icon": "./assets/images/share-logo.ico",
+      "plistStrings": {
+        "CFBundleIdentifier": "io.github.evshiron.nwjs-builder-phoenix.institution.modified",
+        "CFBundleDocumentTypes": []
+      }
+    },
+    "nsis": {
+      "installDirectory": "$PROGRAMFILES\\${_COMPANYNAME}\\${_APPNAME}",
+      "diffUpdaters": true
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "build --mac --x64 --mirror https://npm.taobao.org/mirrors/nwjs/ ."
+  }
+}

@@ -1,0 +1,163 @@
+.container{
+    position: relative;
+    margin:0 10px;
+    background: #e5e5e5;
+}
+.table-wrap{
+    position: relative;
+    margin:0 22px;
+    height: 100%;
+    border:1px solid #ccc;
+    overflow: auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+table th,table td{
+    height: 24px;
+    font-size:12px;
+    text-align: center;
+    border:1px solid #ccc;
+}
+.fixed{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.title{
+    padding:0 10px;
+    color:#cc0000;
+    line-height: 48px;
+}
+.title span{
+    margin-left:20px;
+    font-size:20px;
+}
+.info{
+    margin:0 10px 10px;
+    display: flex;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+.info > div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.info .process{
+    width: 150px;
+    height: 20px;
+    margin-left:10px;
+    color:#fff;
+    text-align: center;
+    line-height: 20px;
+    background: #90b5cc;
+}
+.info .process.blue-bg{
+    background: #008acc;
+}
+.info .process.redBg{
+    background: #cc0000;
+}
+.info .process.greenbBg{
+    background: #27cc67;
+}
+.number-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:10px;
+}
+.number-box input[type="number"],.number-box input[type="button"]{
+    height: 30px;
+}
+.number-box input[type="number"]{
+    width: 60px;
+    padding:0 5px;
+    border:1px solid #ccc;
+}
+.number-box input[type="button"]{
+    width: 40px;
+    color:#fff;
+    text-align: center;
+    background: #cc0000;
+}
+.number-box input[type="button"].blue{
+    background: #008acc;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+.operate-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:10px;
+}
+.operate-box input[type="button"]{
+    height: 30px;
+    padding:0 10px;
+    margin-right:10px;
+    color:#fff;
+    text-align: center;
+    background: #cc0000;
+}
+.operate-box input[type="button"].blue{
+    background: #008acc;
+}
+.operate-box input[type="button"].green{
+    background: #27cc67;
+}
+.left-nav{
+    position: absolute;
+    left:1px;
+    top:22px;
+    width: 20px;
+}
+.right-nav{
+    position: absolute;
+    right:1px;
+    top:22px;
+    width: 20px;
+}
+.left-nav li,.right-nav li{
+    height: 20px;
+    margin-top:1px;
+    font-family: serif;
+    font-size:12px;
+    text-align: center;
+    line-height: 20px;
+    border-radius:4px;
+}
+.left-nav li:hover,.right-nav li:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+li.red{
+    color:#fff;
+    background: #cc0000;
+}
+li.blue{
+    color:#fff;
+    background: #3792cc;
+}
+li.green{
+    color:#fff;
+    background: #27cc67;
+}
+li.gray{
+    color:#fff;
+    background: #90b5cc;
+}
+.momg{
+    margin:0;
+}
+.content-table tbody tr:hover td{
+    background: #08b0cc !important;
+}
